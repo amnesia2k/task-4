@@ -25,7 +25,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1", routes);
 
-// error middleware
 app.use((err, _req, res, _next) => {
   logger.error(err);
   res.status(500).json({
@@ -35,7 +34,6 @@ app.use((err, _req, res, _next) => {
   });
 });
 
-// not found middleware
 app.use((_req, res, _next) => {
   res.status(404).json({ success: false, message: "Not Found" });
 });

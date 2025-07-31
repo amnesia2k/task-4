@@ -1,4 +1,5 @@
 import { Product } from "../db/models/product.model.js";
+import { logger } from "../utils/logger.js";
 
 export const getProducts = async (_, res) => {
   try {
@@ -10,7 +11,7 @@ export const getProducts = async (_, res) => {
       data: { products },
     });
   } catch (err) {
-    console.error("❌ getProducts error:", err.message);
+    logger.error("❌ getProducts error:", err.message);
     return res.status(500).json({
       success: false,
       message: "Internal server error",
@@ -52,7 +53,7 @@ export const createProduct = async (req, res) => {
       data: { product },
     });
   } catch (err) {
-    console.error("❌ createProduct error:", err.message);
+    logger.error("❌ createProduct error:", err.message);
     return res.status(500).json({
       success: false,
       message: "Internal server error",
@@ -73,7 +74,7 @@ export const deleteProduct = async (req, res) => {
 
     return res.status(200).json({ message: "Product deleted", success: true });
   } catch (err) {
-    console.error("❌ deleteProduct error:", err.message);
+    logger.error("❌ deleteProduct error:", err.message);
     return res.status(500).json({
       success: false,
       message: "Internal server error",

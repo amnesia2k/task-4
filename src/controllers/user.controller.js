@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { User } from "../db/models/user.model.js";
 import jwt from "jsonwebtoken";
+import { logger } from "../utils/logger.js";
 
 export const createUser = async (req, res) => {
   try {
@@ -40,7 +41,7 @@ export const createUser = async (req, res) => {
       data: { user },
     });
   } catch (err) {
-    console.error("❌ createUser error:", err.message);
+    logger.error("❌ createUser error:", err.message);
     return res.status(500).json({
       success: false,
       message: "Internal server error",
@@ -93,7 +94,7 @@ export const loginUser = async (req, res) => {
       data: { user: safeUser },
     });
   } catch (err) {
-    console.error("❌ loginUser error:", err.message);
+    logger.error("❌ loginUser error:", err.message);
     return res.status(500).json({
       success: false,
       message: "Internal server error",

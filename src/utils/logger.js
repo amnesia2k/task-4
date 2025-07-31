@@ -1,8 +1,8 @@
 const COLORS = {
-  info: "\x1b[36m", // cyan
-  warn: "\x1b[33m", // yellow
-  error: "\x1b[31m", // red
-  fatal: "\x1b[41m", // red background
+  info: "\x1b[36m",
+  warn: "\x1b[33m",
+  error: "\x1b[31m",
+  fatal: "\x1b[41m",
 };
 
 const RESET = "\x1b[0m";
