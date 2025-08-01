@@ -1,19 +1,13 @@
-import { createId } from "@paralleldrive/cuid2";
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-  _id: {
-    type: String,
-    default: () => createId(),
-  },
-
   productName: {
     type: String,
     required: true,
   },
 
   ownerId: {
-    type: String,
+    type: mongoose.models.User,
     ref: "User",
     required: true,
   },
